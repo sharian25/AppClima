@@ -1,0 +1,8 @@
+https://api.openweathermap.org/data/2.5/weather?q=Bogota&lang=es&units=metric&appid=55fed173dbbbae45d6acd4f1a920d2f1
+https://api.openweathermap.org/data/2.5/forecast?q=bogota&cnt=5&appid=55fed173dbbbae45d6acd4f1a920d2f1&units=metric
+https://api.openweathermap.org/data/2.5/forecast?lat=57&lon=-2.15&cnt=5&appid=55fed173dbbbae45d6acd4f1a920d2f1
+
+https://api.weatherapi.com/v1/current.json?key=tuApiKey&lang=es&q=london
+
+
+43102cdf94da4894a7a104030230402
