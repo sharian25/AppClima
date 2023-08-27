@@ -1,32 +1,39 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Container, Typography, Box, TextField } from "@mui/material";
 import { LoadingButton } from "@mui/lab";
 import HistoryWheathe from "./HistoryWheathe";
+import GpsFixedIcon from "@mui/icons-material/GpsFixed";
+import LocationOnIcon from "@mui/icons-material/LocationOn";
+/* import Iconos from './Iconos' */
 
 const urlApi = `https://api.openweathermap.org/data/2.5/weather?q=`;
 const urlApi2 = `&appid=55fed173dbbbae45d6acd4f1a920d2f1&units=metric`;
 
-function PlaceWheather() {
-  const [city, setCity] = useState(""); // estado de de las ciudades en el formuraio
+function PlaceWheather(props) {
+  const [city, setCity] = useState("Bogota"); // estado de de las ciudades en el formuraio inica con Bogotá
   const [loading, setLoading] = useState(false); // estado que muestra el mensaje del boton al darle click
-  const [submit, setSubmit] = useState(false);
+  const [submit, setSubmit] = useState(true); //Captura el nuevo Valor de City
   const [error, setError] = useState({
     error: false,
     message: "",
   });
+
+  useEffect(() => {
+    onSubmit();
+  }, []); // Se ejecuta solo cuando el componente se monta
+
   const [weather, setWeather] = useState({
     //estado que muestra los resultados del API
     city: "",
     country: "",
     temp: "",
     conditión: "",
-    icon: "",
     description: "",
   });
 
   const onSubmit = async (e) => {
-    e.preventDefault();
+    if (e) e.preventDefault();
     setSubmit(!submit);
     setLoading(true);
     setError({
@@ -43,8 +50,8 @@ function PlaceWheather() {
       setWeather({
         city: data.name,
         temp: data.main.temp,
+
         description: data.weather[0].description,
-        icon: data.weather[0].icon,
         country: data.sys.country,
         /*   
           
@@ -52,8 +59,6 @@ function PlaceWheather() {
           ,
            */
       });
-
-      /*    console.log(data); */
     } catch (error) {
       setError({
         error: true,
@@ -65,22 +70,23 @@ function PlaceWheather() {
   };
 
   return (
-    <Container className="container" maxWidth="sm" sx={{ mt: 2 }}>
-      <Typography variant="h3" component="h1" align="center" gutterBottom>
+    <Box className="container" maxWidth="xs" sx={{ mt: 2 }}>
+      {/* <Typography variant="h3" component="h1" align="center" gutterBottom>
         Wheather app
-      </Typography>
+      </Typography> */}
       <Box
-        sx={{ display: "flex", gap: 2 }}
+        sx={{ display: "flex", gap: 2}}
         component="form"
         autoComplete="off"
         onSubmit={onSubmit}
       >
         <TextField
+        sx={{mt:3}}
           id="city"
-          label="Ciudad"
           variant="outlined"
           size="small"
           required
+          placeholder="Search for places"
           value={city} // valor de la ciudad buscada
           onChange={(e) => setCity(e.target.value)}
           error={error.error}
@@ -88,6 +94,7 @@ function PlaceWheather() {
         />
 
         <LoadingButton
+        sx={{mt:3}}
           type="submit"
           variant="contained"
           loading={loading} //estado del cambio de mensaje sea true o false
@@ -95,6 +102,7 @@ function PlaceWheather() {
         >
           Buscar
         </LoadingButton>
+        <GpsFixedIcon className="Gps" />
       </Box>
       {weather.city && (
         <Box
@@ -103,24 +111,30 @@ function PlaceWheather() {
             display: "grid",
             gap: 2,
             textAlign: "center",
-          }}
-        >
-          <Typography variant="h4" component="h2">
-            {weather.city},{weather.country}
-          </Typography>
+          }}>
           <Box
-          /*  component="img"
-            alt={weather.description}
-            src={weather.icon}
-            sx={{margin: "0 auto"}} */
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+            }}
           >
-            <Typography variant="h5" component="h3">
+            <img className="img" src={props.icono1} alt={weather.description} />
+            <Typography variant="h2" component="h3" color="#E7E7EB">
               {weather.temp} °C
             </Typography>
-            <Typography variant="h6" component="h4">
-              {weather.description} °C
+            <Typography variant="h4" component="h5" color="#A09FB1">
+              {weather.description}
             </Typography>
           </Box>
+          <Typography
+            variant="h4"
+            component="h2"
+            color="#88869D"
+            fontSize="18px"
+          >
+            <LocationOnIcon /> {weather.city}
+          </Typography>
         </Box>
       )}
 
@@ -135,12 +149,16 @@ function PlaceWheather() {
         </a>
       </Typography>
 
-      <HistoryWheathe 
-      city={weather.city} 
-      submit={submit}  
-      setSubmit={setSubmit}
+      <HistoryWheathe
+        city={weather.city}
+        submit={submit}
+        setSubmit={setSubmit}
       />
-    </Container>
+
+      {/* <Iconos
+      
+      /> */}
+    </Box>
   );
 }
 

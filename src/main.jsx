@@ -11,5 +11,5 @@ ReactDOM.createRoot(document.getElementById('root')).render(
       <CssBaseline/>
        <App />
     </SnackbarProvider>
-  </React.StrictMode>,
+  </React.StrictMode>
 )

@@ -1,16 +1,17 @@
 
 import { Container } from '@mui/material'
 import './App.css'
-import HistoryWheathe from './components/HistoryWheathe'
 import PlaceWheather from './components/PlaceWheather'
+import Iconos from './components/Iconos'
+
 
 function App() {
   
   return (
 
-   <Container>
-    <PlaceWheather/>
-    <HistoryWheathe/>
+   <Container className="ppal">
+    <div>{<Iconos/>}</div>
+    
    </Container>
     
     

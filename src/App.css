@@ -4,7 +4,39 @@
   padding: 2rem;
   text-align: center;
 }
+.img {
+  width: 80%;
+  height: auto;
+  margin: 40% 0;
+}
 
 .ct{
   color: red;
+}
+.ct2 {
+  color: aqua;
+}
+
+.container {
+  background: #1E213A;
+  background-image: url(./img/Cloud-background.png);
+  background-repeat: no-repeat;
+  background-size: 100%;
+  width: 248px;
+  height: 1023px;
+  flex-shrink: 0;
+}
+
+.ppal {
+  background-color: red;
+}
+#city {
+  background: #6E707A;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  color: white;
+}
+.Gps {
+    color: #E7E7EB;
+    margin-top: 30px;
+    
 }
