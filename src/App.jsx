@@ -1,16 +1,23 @@
 
+import { Container} from '@mui/material'
 import './App.css'
+import Iconos from './components/Iconos'
 import HistoryWheathe from './components/HistoryWheathe'
-import PlaceWheather from './components/PlaceWheather'
+
+
 
 function App() {
   
   return (
-    <>
-    <PlaceWheather/>
-    <HistoryWheathe/>
-    </>
+
+   <Container className="ppal">
+    {<div>{<Iconos/>}</div>}
+   </Container>
+    
+    
+    
+    
   )
 }
 
-export default App
+export default App;
