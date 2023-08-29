@@ -1,8 +1,9 @@
 
-import { Container } from '@mui/material'
+import { Container} from '@mui/material'
 import './App.css'
-import PlaceWheather from './components/PlaceWheather'
 import Iconos from './components/Iconos'
+import HistoryWheathe from './components/HistoryWheathe'
+
 
 
 function App() {
@@ -10,8 +11,7 @@ function App() {
   return (
 
    <Container className="ppal">
-    <div>{<Iconos/>}</div>
-    
+    {<div>{<Iconos/>}</div>}
    </Container>
     
     
@@ -20,4 +20,4 @@ function App() {
   )
 }
 
-export default App
+export default App;

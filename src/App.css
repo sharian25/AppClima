@@ -11,13 +11,13 @@
 }
 
 .ct{
-  color: red;
+  background-color: red;
 }
 .ct2 {
   color: aqua;
 }
 
-.container {
+.container{
   background: #1E213A;
   background-image: url(./img/Cloud-background.png);
   background-repeat: no-repeat;
@@ -28,7 +28,8 @@
 }
 
 .ppal {
-  background-color: red;
+  background-color: #100e1d;
+  display: inline-block;
 }
 #city {
   background: #6E707A;
@@ -37,6 +38,9 @@
 }
 .Gps {
     color: #E7E7EB;
-    margin-top: 30px;
-    
+    margin-top: 30px;    
+}
+.hcard {
+  display: flex;
+  gap: 10px;
 }

@@ -5,7 +5,8 @@ import { LoadingButton } from "@mui/lab";
 import HistoryWheathe from "./HistoryWheathe";
 import GpsFixedIcon from "@mui/icons-material/GpsFixed";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
-/* import Iconos from './Iconos' */
+import Card from '@mui/material/Card';
+
 
 const urlApi = `https://api.openweathermap.org/data/2.5/weather?q=`;
 const urlApi2 = `&appid=55fed173dbbbae45d6acd4f1a920d2f1&units=metric`;
@@ -70,94 +71,100 @@ function PlaceWheather(props) {
   };
 
   return (
-    <Box className="container" maxWidth="xs" sx={{ mt: 2 }}>
-      {/* <Typography variant="h3" component="h1" align="center" gutterBottom>
+    <Box>
+      <Box className="hcard">
+      <Card variant="outlined">
+          <HistoryWheathe
+          city={weather.city}
+          submit={submit}
+          setSubmit={setSubmit}
+        />
+      </Card>
+      </Box>
+      <Box className="container" maxWidth="xs" sx={{ mt: 2 }}>
+        {/* <Typography variant="h3" component="h1" align="center" gutterBottom>
         Wheather app
       </Typography> */}
-      <Box
-        sx={{ display: "flex", gap: 2}}
-        component="form"
-        autoComplete="off"
-        onSubmit={onSubmit}
-      >
-        <TextField
-        sx={{mt:3}}
-          id="city"
-          variant="outlined"
-          size="small"
-          required
-          placeholder="Search for places"
-          value={city} // valor de la ciudad buscada
-          onChange={(e) => setCity(e.target.value)}
-          error={error.error}
-          helperText={error.message}
-        />
-
-        <LoadingButton
-        sx={{mt:3}}
-          type="submit"
-          variant="contained"
-          loading={loading} //estado del cambio de mensaje sea true o false
-          loadingIndicator="Buscando Ciudad"
-        >
-          Buscar
-        </LoadingButton>
-        <GpsFixedIcon className="Gps" />
-      </Box>
-      {weather.city && (
         <Box
-          sx={{
-            mt: 2,
-            display: "grid",
-            gap: 2,
-            textAlign: "center",
-          }}>
+          sx={{ display: "flex", gap: 2 }}
+          component="form"
+          autoComplete="off"
+          onSubmit={onSubmit}
+        >
+          <TextField
+            sx={{ mt: 3 }}
+            id="city"
+            variant="outlined"
+            size="small"
+            required
+            placeholder="Search for places"
+            value={city} // valor de la ciudad buscada
+            onChange={(e) => setCity(e.target.value)}
+            error={error.error}
+            helperText={error.message}
+          />
+
+          <LoadingButton
+            sx={{ mt: 3 }}
+            type="submit"
+            variant="contained"
+            loading={loading} //estado del cambio de mensaje sea true o false
+            loadingIndicator="Buscando Ciudad"
+          >
+            Buscar
+          </LoadingButton>
+          <GpsFixedIcon className="Gps" />
+        </Box>
+        {weather.city && (
           <Box
             sx={{
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
+              mt: 2,
+              display: "grid",
+              gap: 2,
+              textAlign: "center",
             }}
           >
-            <img className="img" src={props.icono1} alt={weather.description} />
-            <Typography variant="h2" component="h3" color="#E7E7EB">
-              {weather.temp} °C
-            </Typography>
-            <Typography variant="h4" component="h5" color="#A09FB1">
-              {weather.description}
+            <Box
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+              }}
+            >
+              <img
+                className="img"
+                src={props.icono1}
+                alt={weather.description}
+              />
+              <Typography variant="h2" component="h3" color="#E7E7EB">
+                {weather.temp} °C
+              </Typography>
+              <Typography variant="h4" component="h5" color="#A09FB1">
+                {weather.description}
+              </Typography>
+            </Box>
+            <Typography
+              variant="h4"
+              component="h2"
+              color="#88869D"
+              fontSize="18px"
+            >
+              <LocationOnIcon /> {weather.city}
             </Typography>
           </Box>
-          <Typography
-            variant="h4"
-            component="h2"
-            color="#88869D"
-            fontSize="18px"
+        )}
+
+        <Typography textAlign="center" sx={{ mt: 2, fontSize: "10px" }}>
+          Powered by:{" "}
+          <a
+            href="https://api.openweathermap.org/"
+            title="Weather API"
+            target="_blank"
           >
-            <LocationOnIcon /> {weather.city}
-          </Typography>
-        </Box>
-      )}
-
-      <Typography textAlign="center" sx={{ mt: 2, fontSize: "10px" }}>
-        Powered by:{" "}
-        <a
-          href="https://api.openweathermap.org/"
-          title="Weather API"
-          target="_blank"
-        >
-          WeatherAPI.com
-        </a>
-      </Typography>
-
-      <HistoryWheathe
-        city={weather.city}
-        submit={submit}
-        setSubmit={setSubmit}
-      />
-
-      {/* <Iconos
-      
-      /> */}
+            WeatherAPI.com
+          </a>
+        </Typography>
+      </Box>
     </Box>
   );
 }

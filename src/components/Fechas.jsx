@@ -19,7 +19,6 @@ function FechaFormateada(props) {
   return (
     <Container className='ct2'>
       <h1>{fecha}</h1>
-      
     </Container>
   );
 }
